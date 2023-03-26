@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmbitWebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:AmbitWebAPI.Bootstrapper">
+            <summary>
+            Bootstrap Class
+            </summary>
+        </member>
+        <member name="M:AmbitWebAPI.Bootstrapper.Resolve(Autofac.ContainerBuilder)">
+            <summary>
+            Resolves the specified builder.
+            </summary>
+            <param name="builder">The builder.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,301 @@
+﻿@{
+    Layout = null;
+
+}
+@using Ambit.Common.Paging;
+@using Ambit.Entities.Contract;
+@model PagedList<AbstractQuestions>
+
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Login | MyWatchman</title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width,initial-scale=1,user-scalable=no'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .questionbox .box {
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .paddingforrow {
+            margin: 0 !important
+        }
+
+        .width_height {
+            padding: 0 !important;
+            display: flex
+        }
+
+        .font {
+            font-size: 13px
+        }
+
+        .img {
+            width: 55px
+        }
+
+        .paddingfordiv {
+            margin: 0 !important
+        }
+
+        @@media only screen and (min-width:1140px) {
+            .Box {
+                background-color: #fff
+            }
+        }
+
+        @@media (max-width:320px) {
+            .img {
+                height: 0
+            }
+        }
+
+        .containt {
+            background: #fff
+        }
+
+        .header {
+            display: flex;
+            background: #fff;
+            padding-top: 1px
+        }
+
+        .headercontent {
+            background: #000;
+            color: #fff;
+            width: 84%;
+            padding: 5px
+        }
+
+        .Marks {
+            border: 1px solid #000;
+            width: 16%;
+            margin: 0 0 0 5px;
+            padding: 1px;
+            padding-top: 14px;
+        }
+
+        .questions {
+            padding: 5px 0px;
+            margin-bottom: 5px;
+            background: #fff;
+        }
+
+        .thumbnail {
+            padding: 6px 10px !important;
+            border-radius: 7px !important;
+            margin: 6px 0 !important
+        }
+
+        .preview {
+            margin: 0 0 6px !important
+        }
+
+        .optionbox {
+            display: flex
+        }
+
+            .optionbox .col-md-6 {
+                width: 50%;
+                padding: 0
+            }
+
+        .section {
+            text-align: center;
+            padding: 4px;
+            margin: 5px 0px;
+            border: 1px solid black;
+            background: #fff;
+        }
+
+        .ml-8 {
+            margin-left: -8px;
+        }
+
+        .dflex {
+            display: flex;
+        }
+
+        .optionpadding {
+            padding-top: 12px;
+        }
+
+        .font-16 {
+            font-size: 13px;
+        }
+
+        .pl_0 {
+            padding-left: 0px !important;
+        }
+
+        .pr_10 {
+            padding-right: 10px !important;
+        }
+
+        .vAlign {
+            vertical-align: baseline;
+            text-align: justify;
+        }
+
+        .text_white {
+            color: white;
+        }
+
+        .martop_10 {
+            margin-top: 10px;
+        }
+
+        .paddingforoption {
+            padding: 5px 6px;
+        }
+
+        .pl_33 {
+            padding-left: 27px;
+        }
+
+        .tablwidth {
+            width: 100%;
+        }
+
+        .OptionLeftwidth {
+            width: 7%;
+            font-size: 13px;
+        }
+
+        .optionRightwidth {
+            width: 43%;
+            font-size: 13px;
+        }
+
+        .optionRightFullwidth {
+            width: 93%;
+            font-size: 13px;
+        }
+
+        .txtCenter {
+            text-align: center;
+        }
+
+        .font-bold {
+            font-weight: bold !important;
+        }
+
+        .body_margin {
+            margin: 8px;
+        }
+
+        .Answertext {
+            padding-left: 40px !important;
+            text-align: justify;
+        }
+
+        .Answer {
+            padding-left: 0px !important;
+            vertical-align: baseline;
+            text-align: justify;
+            padding-right: 30px !important;
+        }
+
+        .marleft {
+            margin-left: 0px;
+        }
+
+        .pl_10 {
+            padding-left: 24px !important
+        }
+
+        .Cambria_Font_Family {
+            font-family: 'Cambria', sans-serif;
+        }
+
+        .Solvineair_Font_Family {
+            font-family: 'Souvenir Lt BT', sans-serif;
+        }
+
+        .QuestionLeftwidth {
+            width: 27px;
+            font-size: 13px;
+        }
+
+        .QuestionRightFullwidth {
+        }
+
+        @@font-face {
+            font-family: 'Souvenir Lt BT';
+            src: url('../fonts/Souvenir Lt BT.ttf') format('truetype');
+        }
+
+        @@font-face {
+            font-family: 'Cambria' !important;
+            src: url('../fonts/CAMBRIAB.TTF') format('truetype');
+        }
+    </style>
+</head>
+<body class='body_margin' style="width:fit-content">
+    <div class='containt'>
+        <div class='main'>
+            @if (Model.Values.Any())
+            {
+                foreach (var item2 in Model.Values)
+                {
+                    <div class="questions questionbox Box thumbnail Solvineair_Font_Family" id="question_@item2.Id" onclick="myFunction(@item2.Id ,@ViewBag.MarkId)">
+                        <table>
+                            <tr>
+                                <td class="vAlign font font-bold QuestionLeftwidth Cambria_Font_Family">Q:</td>
+                                <td class="font vAlign QuestionRightFullwidth">
+                                    @Html.Raw(@item2.Question)
+                                </td>
+                            </tr>
+                        </table>
+
+                        @if (!string.IsNullOrWhiteSpace(item2.Option1) || !string.IsNullOrWhiteSpace(item2.Option2) || !string.IsNullOrWhiteSpace(item2.Option3) || !string.IsNullOrWhiteSpace(item2.Option4))
+                        {
+                            <table class='martop_10 tablwidth'>
+                                @if (!string.IsNullOrWhiteSpace(item2.Option1))
+                                {
+                                    <tr><td class='vAlign pl_33 OptionLeftwidth Cambria_Font_Family'>[A] </td><td class='paddingforoption Solvineair_Font_Family vAlign optionRightFullwidth'> @Html.Raw(@item2.Option1)</td></tr>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(item2.Option2))
+                                {
+                                    <tr><td class='vAlign pl_33 OptionLeftwidth Cambria_Font_Family'>[B] </td><td class='paddingforoption Solvineair_Font_Family vAlign optionRightFullwidth'> @Html.Raw(@item2.Option2) </td></tr>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(item2.Option3))
+                                {
+                                    <tr><td class='vAlign pl_33 OptionLeftwidth Cambria_Font_Family'>[C] </td><td class='paddingforoption Solvineair_Font_Family vAlign optionRightFullwidth'> @Html.Raw(@item2.Option3) </td></tr>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(item2.Option4))
+                                {
+                                    <tr><td class='vAlign pl_33 OptionLeftwidth Cambria_Font_Family'>[D] </td><td class='paddingforoption Solvineair_Font_Family vAlign optionRightFullwidth'> @Html.Raw(@item2.Option4) </td></tr>
+                                }
+                            </table>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <script>
+        function myFunction(n, MarkId) {
+            var questionlength = document.getElementsByClassName("questionbox").length;
+            for (var i = 0; i < questionlength; i++) {
+                document.getElementsByClassName("questionbox")[i].style.border = "1px solid #ddd";
+            }
+            document.getElementById("question_" + n).style.border = "1px solid #00d9f0";
+            androidButton.onCapturedButtonClicked(n, MarkId);
+        }
+
+        $(document).ready(function () {
+            $('body').bind('copy paste', function (e) {
+                e.preventDefault(); return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
