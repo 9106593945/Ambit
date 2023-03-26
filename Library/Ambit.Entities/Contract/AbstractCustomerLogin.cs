@@ -18,6 +18,7 @@ namespace Ambit.Entities.Contract
         public int Created_By { get; set; }
         public string Updated_On { get; set; }
         public int Updated_By { get; set; }
+        public string authtoken { get; set; }
 
     }
 }

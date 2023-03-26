@@ -19,16 +19,14 @@ namespace Ambit.Common
     public abstract class BaseModel
     {
         private static readonly object LockObject = new object();
-        private List<string> fieldsToNull;
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseModel"/> class.
         /// </summary>
-        protected BaseModel()
-        {
-            this.fieldsToNull = new List<string>();
-        }
+        //protected BaseModel()
+        //{
+        //    this.fieldsToNull = new List<string>();
+        //}
 
         /// <summary>
         /// Sets the fields to null.
@@ -36,25 +34,25 @@ namespace Ambit.Common
         /// <value>
         /// The fields to null.
         /// </value>
-        public List<string> FieldsToNull
-        {
-            set
-            {
-                if (value != null && value.Any())
-                {
-                    this.fieldsToNull.AddRange(value.Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x = x.Trim()).Distinct(StringComparer.OrdinalIgnoreCase));
-                }
-            }
-        }
+        //public List<string> FieldsToNull
+        //{
+        //    set
+        //    {
+        //        if (value != null && value.Any())
+        //        {
+        //            this.fieldsToNull.AddRange(value.Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x = x.Trim()).Distinct(StringComparer.OrdinalIgnoreCase));
+        //        }
+        //    }
+        //}
         
         /// <summary>
         /// Gets the fields to null.
         /// </summary>
         /// <returns> value of fields to null</returns>
-        public object GetFieldsToNull()
-        {
-            return this.fieldsToNull.Any() ? string.Join(",", this.fieldsToNull.Where(s => !string.IsNullOrWhiteSpace(s)).ToList()) : (object)DBNull.Value;
-        }
+        //public object GetFieldsToNull()
+        //{
+        //    return this.fieldsToNull.Any() ? string.Join(",", this.fieldsToNull.Where(s => !string.IsNullOrWhiteSpace(s)).ToList()) : (object)DBNull.Value;
+        //}
 
         /// <summary>
         /// Gets the properties.
