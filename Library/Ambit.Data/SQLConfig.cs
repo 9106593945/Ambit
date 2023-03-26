@@ -13,7 +13,7 @@ namespace Ambit.Data
     {
         
         #region Users        
-        public const string CustomerUpsert = "dbo.CustomerUpsert";
+        public const string CustomerLoginUpsert = "dbo.CustomerLoginUpsert";
         public const string Login = "dbo.Login";
 
         #endregion

@@ -9,12 +9,12 @@ using Ambit.Entities.Contract;
 
 namespace Ambit.Data.Contract
 {
-   public abstract class AbstractCustomerDao : AbstractBaseDao
+   public abstract class AbstractCustomerLoginDao : AbstractBaseDao
     {
-        public abstract SuccessResult<AbstractCustomer> Login(AbstractCustomer abstractCustomer);
+        public abstract SuccessResult<AbstractCustomerLogin> Login(AbstractCustomerLogin abstractCustomer);
         //public abstract PagedList<AbstractCustomer> UserAll(PageParam pageParam, string search, int UserType = 0, string StartDate = "", string EndDate = "");
         //public abstract SuccessResult<AbstractCustomer> UserById(int id, string DeviceToken);
-        public abstract SuccessResult<AbstractCustomer> CustomerUpsert(AbstractCustomer abstractCustomer);
+        public abstract SuccessResult<AbstractCustomerLogin> CustomerLoginUpsert(AbstractCustomerLogin abstractCustomer);
         //public abstract bool UserDelete(int id);
         
     }

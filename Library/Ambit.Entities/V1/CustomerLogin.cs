@@ -7,7 +7,7 @@ using Ambit.Entities.Contract;
 
 namespace Ambit.Entities.V1
 {
-    public class Customer : AbstractCustomer
+    public class CustomerLogin : AbstractCustomerLogin
     {
     }
 }

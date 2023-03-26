@@ -24,7 +24,7 @@ namespace Ambit.Data
         /// </remarks>
         protected override void Load(ContainerBuilder builder)
         {            
-            builder.RegisterType<V1.CustomerDao>().As<AbstractCustomerDao>().InstancePerDependency();
+            builder.RegisterType<V1.CustomerLoginDao>().As<AbstractCustomerLoginDao>().InstancePerDependency();
             base.Load(builder);
         }
     }

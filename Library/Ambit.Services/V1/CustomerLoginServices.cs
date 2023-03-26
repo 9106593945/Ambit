@@ -14,16 +14,16 @@ using Ambit.Services.Contract;
 
 namespace Ambit.Services.V1
 {
-    public class CustomerServices : AbstractCustomerServices
+    public class CustomerLoginServices : AbstractCustomerLoginServices
     {
-        private AbstractCustomerDao abstractCustomerDao;
+        private AbstractCustomerLoginDao abstractCustomerDao;
 
-        public CustomerServices(AbstractCustomerDao abstractCustomerDao)
+        public CustomerLoginServices(AbstractCustomerLoginDao abstractCustomerDao)
         {
             this.abstractCustomerDao = abstractCustomerDao;
         }
 
-        public override SuccessResult<AbstractCustomer> Login(AbstractCustomer abstractCustomer)
+        public override SuccessResult<AbstractCustomerLogin> Login(AbstractCustomerLogin abstractCustomer)
         {
             return this.abstractCustomerDao.Login(abstractCustomer);
         }
@@ -43,9 +43,9 @@ namespace Ambit.Services.V1
         //    }
         //    return result;
         //}
-        public override SuccessResult<AbstractCustomer> CustomerUpsert(AbstractCustomer abstractusers)
+        public override SuccessResult<AbstractCustomerLogin> CustomerLoginUpsert(AbstractCustomerLogin abstractusers)
         {
-            return this.abstractCustomerDao.CustomerUpsert(abstractusers);
+            return this.abstractCustomerDao.CustomerLoginUpsert(abstractusers);
         }
         
         //public override bool UserDelete(int id)

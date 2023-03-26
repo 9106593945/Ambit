@@ -26,7 +26,7 @@ namespace Ambit.Services
         protected override void Load(ContainerBuilder builder)
         {           
             builder.RegisterModule<DataModule>();
-            builder.RegisterType<V1.CustomerServices>().As<AbstractCustomerServices>().InstancePerDependency();
+            builder.RegisterType<V1.CustomerLoginServices>().As<AbstractCustomerLoginServices>().InstancePerDependency();
             
             base.Load(builder);
         }

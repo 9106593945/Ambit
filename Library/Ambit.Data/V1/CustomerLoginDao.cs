@@ -14,11 +14,11 @@ using Ambit.Entities.V1;
 
 namespace Ambit.Data.V1
 {
-    public class CustomerDao : AbstractCustomerDao
+    public class CustomerLoginDao : AbstractCustomerLoginDao
     {
-        public override SuccessResult<AbstractCustomer> Login(AbstractCustomer abstractCustomer)
+        public override SuccessResult<AbstractCustomerLogin> Login(AbstractCustomerLogin abstractCustomer)
         {
-            SuccessResult<AbstractCustomer> users = null;
+            SuccessResult<AbstractCustomerLogin> users = null;
             var param = new DynamicParameters();
             param.Add("@username", abstractCustomer.username, dbType: DbType.String, direction: ParameterDirection.Input);
             param.Add("@password", abstractCustomer.password, dbType: DbType.String, direction: ParameterDirection.Input);
@@ -26,8 +26,8 @@ namespace Ambit.Data.V1
             using (SqlConnection con = new SqlConnection(Configurations.ConnectionString))
             {
                 var task = con.QueryMultiple(SQLConfig.Login, param, commandType: CommandType.StoredProcedure);
-                users = task.Read<SuccessResult<AbstractCustomer>>().SingleOrDefault();
-                users.Item = task.Read<Customer>().SingleOrDefault();
+                users = task.Read<SuccessResult<AbstractCustomerLogin>>().SingleOrDefault();
+                users.Item = task.Read<CustomerLogin>().SingleOrDefault();
             }
             return users;
         }
@@ -71,29 +71,25 @@ namespace Ambit.Data.V1
         //    return users;
         //}
 
-        public override SuccessResult<AbstractCustomer> CustomerUpsert(AbstractCustomer abstractCustomer)
+        public override SuccessResult<AbstractCustomerLogin> CustomerLoginUpsert(AbstractCustomerLogin abstractCustomer)
         {
-            SuccessResult<AbstractCustomer> users = null;
+            SuccessResult<AbstractCustomerLogin> users = null;
             var param = new DynamicParameters();
+            param.Add("@customerid", abstractCustomer.customerloginid, DbType.Int32, direction: ParameterDirection.Input);
             param.Add("@customerid", abstractCustomer.customerid, DbType.Int32, direction: ParameterDirection.Input);
-            param.Add("@Active", abstractCustomer.Active, DbType.Boolean, direction: ParameterDirection.Input);
-            param.Add("@Name", abstractCustomer.Name, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@customer_number", abstractCustomer.customer_number, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@address", abstractCustomer.address, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@city", abstractCustomer.city, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@postcode", abstractCustomer.postcode, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@state", abstractCustomer.state, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@country", abstractCustomer.country, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@mobile", abstractCustomer.mobile, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@email", abstractCustomer.email, DbType.String, direction: ParameterDirection.Input);
+            param.Add("@name", abstractCustomer.name, DbType.String, direction: ParameterDirection.Input);
+            param.Add("@username", abstractCustomer.username, DbType.String, direction: ParameterDirection.Input);
+            param.Add("@deviceid", abstractCustomer.deviceid, DbType.String, direction: ParameterDirection.Input);
             param.Add("@password", abstractCustomer.password, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@description", abstractCustomer.description, DbType.String, direction: ParameterDirection.Input);
-            param.Add("@transport", abstractCustomer.transport, DbType.String, direction: ParameterDirection.Input);
+            param.Add("@Active", abstractCustomer.Active, DbType.Boolean, direction: ParameterDirection.Input);
+            param.Add("@isapproved", abstractCustomer.isapproved, DbType.Boolean, direction: ParameterDirection.Input);
+            param.Add("@Created_By", abstractCustomer.Created_By, DbType.Int32, direction: ParameterDirection.Input);
+            param.Add("@Updated_By", abstractCustomer.Updated_By, DbType.Int32, direction: ParameterDirection.Input);
             using (SqlConnection con = new SqlConnection(Configurations.ConnectionString))
             {
-                var task = con.QueryMultiple(SQLConfig.CustomerUpsert, param, commandType: CommandType.StoredProcedure);
-                users = task.Read<SuccessResult<AbstractCustomer>>().SingleOrDefault();
-                users.Item = task.Read<Customer>().SingleOrDefault();
+                var task = con.QueryMultiple(SQLConfig.CustomerLoginUpsert, param, commandType: CommandType.StoredProcedure);
+                users = task.Read<SuccessResult<AbstractCustomerLogin>>().SingleOrDefault();
+                users.Item = task.Read<CustomerLogin>().SingleOrDefault();
             }
             return users;
         }

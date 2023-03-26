@@ -19,11 +19,11 @@ namespace AmbitWebAPI.Controllers.V1
     public class CustomerV1Controller : AbstractBaseController
     {
         #region Fields
-        private readonly AbstractCustomerServices abstractCustomerServices;
+        private readonly AbstractCustomerLoginServices abstractCustomerServices;
         #endregion
 
         #region Ctor
-        public CustomerV1Controller(AbstractCustomerServices abstractCustomerServices)
+        public CustomerV1Controller(AbstractCustomerLoginServices abstractCustomerServices)
         {
             this.abstractCustomerServices = abstractCustomerServices;
         }
@@ -34,10 +34,10 @@ namespace AmbitWebAPI.Controllers.V1
         //Register
         [System.Web.Http.HttpPost]
         //[System.Web.Http.Authorize]
-        [InheritedRoute("CustomerUpsert")]
-        public async Task<IHttpActionResult> CustomerUpsert([FromBody]Customer customer)
+        [InheritedRoute("CustomerLoginUpsert")]
+        public async Task<IHttpActionResult> CustomerLoginUpsert([FromBody]CustomerLogin customer)
         {
-            var model = abstractCustomerServices.CustomerUpsert(customer);
+            var model = abstractCustomerServices.CustomerLoginUpsert(customer);
             return this.Content((HttpStatusCode)model.Code, model);
         }
 
@@ -75,9 +75,9 @@ namespace AmbitWebAPI.Controllers.V1
         //[System.Web.Http.Authorize]
         [System.Web.Http.HttpPost]
         [InheritedRoute("Login")]
-        public async Task<IHttpActionResult> Login([FromBody]Customer customer)
+        public async Task<IHttpActionResult> Login([FromBody]CustomerLogin customer)
         {
-            SuccessResult<AbstractCustomer> result = this.abstractCustomerServices.Login(customer);
+            SuccessResult<AbstractCustomerLogin> result = this.abstractCustomerServices.Login(customer);
             return this.Content((HttpStatusCode)result.Code, result);
         }
 

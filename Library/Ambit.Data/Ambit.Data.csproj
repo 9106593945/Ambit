@@ -95,11 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractBaseDao.cs" />
-    <Compile Include="Contract\AbstractCustomerDao.cs" />
+    <Compile Include="Contract\AbstractCustomerLoginDao.cs" />
     <Compile Include="DataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLConfig.cs" />
-    <Compile Include="V1\CustomerDao.cs" />
+    <Compile Include="V1\CustomerLoginDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
