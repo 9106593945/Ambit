@@ -296,6 +296,9 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\V1\ItemsV1Controller.cs" />
+    <Compile Include="Controllers\V1\CategoryV1Controller.cs" />
+    <Compile Include="Controllers\V1\BannerV1Controller.cs" />
     <Compile Include="Controllers\V1\CustomerV1Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

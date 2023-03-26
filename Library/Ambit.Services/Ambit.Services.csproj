@@ -125,9 +125,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractBaseService.cs" />
+    <Compile Include="Contract\AbstractItemsServices.cs" />
+    <Compile Include="Contract\AbstractCategoryServices.cs" />
+    <Compile Include="Contract\AbstractBannerServices.cs" />
     <Compile Include="Contract\AbstractCustomerLoginServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceModule.cs" />
+    <Compile Include="V1\ItemsServices.cs" />
+    <Compile Include="V1\CategoryServices.cs" />
+    <Compile Include="V1\BannerServices.cs" />
     <Compile Include="V1\CustomerLoginServices.cs" />
   </ItemGroup>
   <ItemGroup>

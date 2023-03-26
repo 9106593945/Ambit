@@ -27,6 +27,9 @@ namespace Ambit.Services
         {           
             builder.RegisterModule<DataModule>();
             builder.RegisterType<V1.CustomerLoginServices>().As<AbstractCustomerLoginServices>().InstancePerDependency();
+            builder.RegisterType<V1.BannerServices>().As<AbstractBannerServices>().InstancePerDependency();
+            builder.RegisterType<V1.CategoryServices>().As<AbstractCategoryServices>().InstancePerDependency();
+            builder.RegisterType<V1.ItemsServices>().As<AbstractItemsServices>().InstancePerDependency();
             
             base.Load(builder);
         }

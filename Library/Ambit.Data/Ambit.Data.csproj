@@ -95,10 +95,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractBaseDao.cs" />
+    <Compile Include="Contract\AbstractItemsDao.cs" />
+    <Compile Include="Contract\AbstractCategoryDao.cs" />
+    <Compile Include="Contract\AbstractBannerDao.cs" />
     <Compile Include="Contract\AbstractCustomerLoginDao.cs" />
     <Compile Include="DataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLConfig.cs" />
+    <Compile Include="V1\ItemsDao.cs" />
+    <Compile Include="V1\CategoryDao.cs" />
+    <Compile Include="V1\BannerDao.cs" />
     <Compile Include="V1\CustomerLoginDao.cs" />
   </ItemGroup>
   <ItemGroup>

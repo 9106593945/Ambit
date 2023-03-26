@@ -15,7 +15,18 @@ namespace Ambit.Data
         #region Users        
         public const string CustomerLoginUpsert = "dbo.CustomerLoginUpsert";
         public const string Login = "dbo.Login";
+        #endregion
 
+        #region Banner
+        public const string BannerSelectAll = "dbo.BannerSelectAll";
+        #endregion
+
+        #region Category
+        public const string CategorySelectAll = "dbo.CategorySelectAll";
+        #endregion
+
+        #region Items
+        public const string ItemsSelectAll = "dbo.ItemsSelectAll";
         #endregion
 
     }
